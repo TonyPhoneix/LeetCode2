@@ -1,4 +1,4 @@
-package newcoder;
+package newcoderTop100;
 
 public class TreeNode {
 	int val;

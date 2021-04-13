@@ -1,4 +1,4 @@
-package newcoder;
+package newcoderTop100;
 
 /**
  * Created by Tony on 2017/5/14.

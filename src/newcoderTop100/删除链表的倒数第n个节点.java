@@ -1,4 +1,4 @@
-package newcoder;
+package newcoderTop100;
 
 /**
  * 给定一个链表，删除链表的倒数第 nn 个节点并返回链表的头指针

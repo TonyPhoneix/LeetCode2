@@ -1,4 +1,4 @@
-package newcoder;
+package newcoderTop100;
 
 /**
  * 输入一个链表，反转链表后，输出新链表的表头。

@@ -1,4 +1,4 @@
-package newcoder;
+package newcoderTop100;
 
 /**
  * https://www.nowcoder.com/practice/2820ea076d144b30806e72de5e5d4bbf?tpId=190&tqId=38201&rp=1&ru=%2Fta%2Fjob-code-high-rd&qru=%2Fta%2Fjob-code-high-rd%2Fquestion-ranking&tab=answerKey

@@ -1,4 +1,4 @@
-package newcoder;
+package newcoderTop100;
 
 /**
  * https://leetcode-cn.com/problems/longest-common-subsequence/
