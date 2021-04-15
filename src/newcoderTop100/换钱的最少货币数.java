@@ -7,18 +7,7 @@ package newcoderTop100;
  * 【要求】
  * 时间复杂度O(n \times aim)O(n×aim)，空间复杂度On。
  */
-public class 换钱的最少货币数 {
-
-    int count;
-
-    public void print(int n, String s) {
-        for (int i = 0; i < n; i++) {
-            System.out.print("    ");
-        }
-        System.out.print(s);
-        System.out.println();
-    }
-
+public class 换钱的最少货币数 extends Base {
 
     int[] memo;
 

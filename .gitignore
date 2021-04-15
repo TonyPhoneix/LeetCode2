@@ -1,0 +1,8 @@
+.DS_Store
+**/build/
+**/classes/
+*.class
+# ide
+.idea/
+*.iml
+out
