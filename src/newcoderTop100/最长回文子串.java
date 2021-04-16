@@ -11,6 +11,46 @@ public class 最长回文子串 extends Base {
 
     Boolean[][] memo;
 
+    public String longestPalindrome2(String s) {
+        String max = "";
+        if (s.length() == 1) {
+            return s;
+        }
+        for (int i = 0; i < s.length() - 1; i++) {
+            var p1 = palindrome(i, i, s);
+            var p2 = palindrome(i, i + 1, s);
+            if (p1 != null && p1.length() > max.length()) {
+                max = p1;
+            }
+            if (p2 != null && p2.length() > max.length()) {
+                max = p2;
+            }
+        }
+        return max;
+    }
+
+    public String palindrome(int l, int r, String s) {
+        int i = l, j = r;
+        if (s.charAt(i) != s.charAt(j)) {
+            return null;
+        }
+        while (i >= 0 && j <= s.length() - 1) {
+            if (s.charAt(i) == s.charAt(j)) {
+                i--;
+                j++;
+            } else {
+                break;
+            }
+        }
+        return s.substring(i + 1, j);
+    }
+
+    /**
+     * 动态规划解法。
+     *
+     * @param s
+     * @return
+     */
     public String longestPalindrome(String s) {
         memo = new Boolean[s.length()][s.length()];
 
@@ -70,9 +110,9 @@ public class 最长回文子串 extends Base {
 
     public static void main(String[] args) {
         最长回文子串 c = new 最长回文子串();
-        var babad = c.longestPalindrome("kyyrjtdplseovzwjkykrjwhxquwxsfsorjiumvxjhjmgeueafubtonhlerrgsgohfosqssmizcuqryqomsipovhhodpfyudtusjhonlqabhxfahfcjqxyckycstcqwxvicwkjeuboerkmjshfgiglceycmycadpnvoeaurqatesivajoqdilynbcihnidbizwkuaoegmytopzdmvvoewvhebqzskseeubnretjgnmyjwwgcooytfojeuzcuyhsznbcaiqpwcyusyyywqmmvqzvvceylnuwcbxybhqpvjumzomnabrjgcfaabqmiotlfojnyuolostmtacbwmwlqdfkbfikusuqtupdwdrjwqmuudbcvtpieiwteqbeyfyqejglmxofdjksqmzeugwvuniaxdrunyunnqpbnfbgqemvamaxuhjbyzqmhalrprhnindrkbopwbwsjeqrmyqipnqvjqzpjalqyfvaavyhytetllzupxjwozdfpmjhjlrnitnjgapzrakcqahaqetwllaaiadalmxgvpawqpgecojxfvcgxsbrldktufdrogkogbltcezflyctklpqrjymqzyzmtlssnavzcquytcskcnjzzrytsvawkavzboncxlhqfiofuohehaygxidxsofhmhzygklliovnwqbwwiiyarxtoihvjkdrzqsnmhdtdlpckuayhtfyirnhkrhbrwkdymjrjklonyggqnxhfvtkqxoicakzsxmgczpwhpkzcntkcwhkdkxvfnjbvjjoumczjyvdgkfukfuldolqnauvoyhoheoqvpwoisniv");
-        //TODO 时间复杂度超出要求。
+        //TODO 动态规划 时间复杂度超出要求。
+//        var babad = c.longestPalindrome("kyyrjtdplseovzwjkykrjwhxquwxsfsorjiumvxjhjmgeueafubtonhlerrgsgohfosqssmizcuqryqomsipovhhodpfyudtusjhonlqabhxfahfcjqxyckycstcqwxvicwkjeuboerkmjshfgiglceycmycadpnvoeaurqatesivajoqdilynbcihnidbizwkuaoegmytopzdmvvoewvhebqzskseeubnretjgnmyjwwgcooytfojeuzcuyhsznbcaiqpwcyusyyywqmmvqzvvceylnuwcbxybhqpvjumzomnabrjgcfaabqmiotlfojnyuolostmtacbwmwlqdfkbfikusuqtupdwdrjwqmuudbcvtpieiwteqbeyfyqejglmxofdjksqmzeugwvuniaxdrunyunnqpbnfbgqemvamaxuhjbyzqmhalrprhnindrkbopwbwsjeqrmyqipnqvjqzpjalqyfvaavyhytetllzupxjwozdfpmjhjlrnitnjgapzrakcqahaqetwllaaiadalmxgvpawqpgecojxfvcgxsbrldktufdrogkogbltcezflyctklpqrjymqzyzmtlssnavzcquytcskcnjzzrytsvawkavzboncxlhqfiofuohehaygxidxsofhmhzygklliovnwqbwwiiyarxtoihvjkdrzqsnmhdtdlpckuayhtfyirnhkrhbrwkdymjrjklonyggqnxhfvtkqxoicakzsxmgczpwhpkzcntkcwhkdkxvfnjbvjjoumczjyvdgkfukfuldolqnauvoyhoheoqvpwoisniv");
         //还是要写出来另一种解法。
-        System.out.println(babad);
+        System.out.println(c.longestPalindrome2("babad"));
     }
 }
