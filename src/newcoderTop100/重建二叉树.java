@@ -27,7 +27,7 @@ public class 重建二叉树 {
         int i = inStart;
         for (; i <= inEnd; i++) {
             if (in[i] == pre[preStart]) {
-                //以i为边界，开始拆数组
+                //以i为边界，开始拆数组,左边是左子树，右边是右子树
                 root.left = rebuild(pre, preStart + 1, endStart, in, inStart, i - 1);
                 root.right = rebuild(pre, preStart + 2, endStart, in, i + 1, endStart);
             }
