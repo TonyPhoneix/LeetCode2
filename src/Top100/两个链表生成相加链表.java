@@ -1,7 +1,8 @@
 package Top100;
 
 
-import common.*;
+import common.Base;
+import common.ListNode;
 
 import java.util.Stack;
 

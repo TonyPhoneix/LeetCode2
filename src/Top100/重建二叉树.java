@@ -1,4 +1,5 @@
 package Top100;
+import common.*;
 
 public class 重建二叉树 {
 

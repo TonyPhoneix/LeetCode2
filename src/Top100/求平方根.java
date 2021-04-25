@@ -8,6 +8,6 @@ package Top100;
 public class 求平方根 {
     public int sqrt(int x) {
         // write code here
-
+        return 0;
     }
 }

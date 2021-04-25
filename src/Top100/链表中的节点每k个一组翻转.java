@@ -1,4 +1,5 @@
 package Top100;
+import common.*;
 
 /**
  * 题目描述

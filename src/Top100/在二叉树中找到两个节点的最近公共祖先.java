@@ -1,4 +1,5 @@
 package Top100;
+import common.*;
 
 /**
  * https://www.nowcoder.com/practice/e0cc33a83afe4530bcec46eba3325116
