@@ -27,7 +27,7 @@ package leetcode.editor.cn;
  *
  * @see <a href="https://leetcode-cn.com/problems/sqrtx/">x 的平方根</a>
  */
-public class Sqrtx {
+public class x的平方根 {
 
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
@@ -62,7 +62,7 @@ public class Sqrtx {
 //leetcode submit region end(Prohibit modification and deletion)
 
     public static void main(String[] args) {
-        Solution solution = new Sqrtx().new Solution();
+        Solution solution = new x的平方根().new Solution();
     }
 
 }

@@ -40,7 +40,7 @@ import java.util.Stack;
  * <p>
  * 思路：使用辅助栈每次记录最小值
  */
-public class BaoHanMinhanShuDeZhanLcof {
+public class 包含min函数的栈 {
 
     //leetcode submit region begin(Prohibit modification and deletion)
     class MinStack {
@@ -93,7 +93,7 @@ public class BaoHanMinhanShuDeZhanLcof {
      */
     //leetcode submit region end(Prohibit modification and deletion)
     public static void main(String[] args) {
-        MinStack solution = new BaoHanMinhanShuDeZhanLcof().new MinStack();
+        MinStack solution = new 包含min函数的栈().new MinStack();
     }
 
 }
