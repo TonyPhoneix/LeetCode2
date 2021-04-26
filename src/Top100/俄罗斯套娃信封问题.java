@@ -1,6 +1,7 @@
 package Top100;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import common.*;
@@ -21,7 +22,7 @@ public class 俄罗斯套娃信封问题 extends Base {
 
     public int maxEnvelopes(int[][] envelopes) {
         var list = Arrays.stream(envelopes)
-                .sorted((o1, o2) -> Integer.compare(o1[0], o2[0]))
+                .sorted(Comparator.comparingInt(o -> o[0]))
                 .collect(Collectors.toList());
         memo = new int[list.size()];
         int max = 1;
