@@ -35,10 +35,9 @@ import java.util.Stack;
 
 /**
  * [剑指 Offer 30] 包含min函数的栈 </br>
+ * 思路：使用辅助栈每次记录最小值
  *
  * @see <a href="https://leetcode-cn.com/problems/bao-han-minhan-shu-de-zhan-lcof/">包含min函数的栈</a>
- * <p>
- * 思路：使用辅助栈每次记录最小值
  */
 public class 包含min函数的栈 {
 

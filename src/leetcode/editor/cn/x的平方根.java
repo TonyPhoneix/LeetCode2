@@ -24,8 +24,10 @@ package leetcode.editor.cn;
 
 /**
  * [69] x 的平方根 </br>
+ * 思路：二分法求解
  *
  * @see <a href="https://leetcode-cn.com/problems/sqrtx/">x 的平方根</a>
+ *
  */
 public class x的平方根 {
 
