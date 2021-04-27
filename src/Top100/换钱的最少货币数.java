@@ -1,5 +1,4 @@
 package Top100;
-import common.*;
 
 /**
  * https://www.nowcoder.com/practice/3911a20b3f8743058214ceaa099eeb45?tpId=190&tqId=36067&rp=1&ru=%2Fta%2Fjob-code-high-rd&qru=%2Fta%2Fjob-code-high-rd%2Fquestion-ranking&tab=answerKey
@@ -8,7 +7,7 @@ import common.*;
  * 【要求】
  * 时间复杂度O(n \times aim)O(n×aim)，空间复杂度On。
  */
-public class 换钱的最少货币数 extends Base {
+public class 换钱的最少货币数 {
 
     int[] memo;
 

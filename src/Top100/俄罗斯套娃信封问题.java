@@ -1,10 +1,11 @@
 package Top100;
 
+import common.Utils;
+
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-import common.*;
 
 /**
  * https://leetcode-cn.com/problems/russian-doll-envelopes/
@@ -16,7 +17,7 @@ import common.*;
  * <p>
  * 注意：不允许旋转信封。
  */
-public class 俄罗斯套娃信封问题 extends Base {
+public class 俄罗斯套娃信封问题 {
 
     int[] memo;
 
@@ -60,7 +61,7 @@ public class 俄罗斯套娃信封问题 extends Base {
 
     public static void main(String[] args) {
         俄罗斯套娃信封问题 c = new 俄罗斯套娃信封问题();
-        var i = c.maxEnvelopes(c.toMatrix("[1,2],[2,3],[3,4],[3,5],[4,5],[5,5],[5,6],[6,7],[7,8]"));
+        var i = c.maxEnvelopes(Utils.toMatrix("[1,2],[2,3],[3,4],[3,5],[4,5],[5,5],[5,6],[6,7],[7,8]"));
         System.out.println(i);
     }
 

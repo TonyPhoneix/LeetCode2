@@ -1,13 +1,14 @@
 package Top100;
 
+import common.Utils;
+
 import java.util.ArrayList;
-import common.*;
 
 /**
  * 给定一个m x n大小的矩阵（m行，n列），按螺旋的顺序返回矩阵中的所有元素。
  * https://www.nowcoder.com/practice/7edf70f2d29c4b599693dc3aaeea1d31
  */
-public class 螺旋矩阵 extends Base {
+public class 螺旋矩阵 {
 
     /**
      * 1 2 3
@@ -76,7 +77,7 @@ public class 螺旋矩阵 extends Base {
 
     public static void main(String[] args) {
         螺旋矩阵 c = new 螺旋矩阵();
-        var integers = c.spiralOrder(c.toMatrix("[7],[9],[6]"));
+        var integers = c.spiralOrder(Utils.toMatrix("[7],[9],[6]"));
         System.out.println(integers);
     }
 }

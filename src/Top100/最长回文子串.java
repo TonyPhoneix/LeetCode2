@@ -1,5 +1,4 @@
 package Top100;
-import common.*;
 
 /**
  * https://leetcode-cn.com/problems/longest-palindromic-substring/
@@ -8,7 +7,7 @@ import common.*;
  * 输出："bab"
  * 解释："aba" 同样是符合题意的答案。
  */
-public class 最长回文子串 extends Base {
+public class 最长回文子串 {
 
     Boolean[][] memo;
 

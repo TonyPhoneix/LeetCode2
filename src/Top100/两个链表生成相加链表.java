@@ -1,8 +1,8 @@
 package Top100;
 
 
-import common.Base;
 import common.ListNode;
+import common.Utils;
 
 import java.util.Stack;
 
@@ -18,8 +18,7 @@ import java.util.Stack;
  * 返回值
  * {1,0,0,0}
  */
-public class 两个链表生成相加链表 extends Base {
-
+public class 两个链表生成相加链表 {
 
     /**
      * 模拟加法
@@ -64,7 +63,7 @@ public class 两个链表生成相加链表 extends Base {
 
     public static void main(String[] args) {
         两个链表生成相加链表 c = new 两个链表生成相加链表();
-        var listNode = c.addInList(c.toList("1,2,3"), c.toList("4,5,6"));
-        c.printListNode(listNode);
+        var listNode = c.addInList(Utils.toList("1,2,3"), Utils.toList("4,5,6"));
+        Utils.printListNode(listNode);
     }
 }

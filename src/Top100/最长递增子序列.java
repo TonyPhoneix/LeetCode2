@@ -1,7 +1,8 @@
 package Top100;
 
 import java.util.Arrays;
-import common.*;
+
+import static common.Utils.print;
 
 /**
  * https://leetcode-cn.com/problems/longest-increasing-subsequence/
@@ -12,7 +13,9 @@ import common.*;
  * 输出：4
  * 解释：最长递增子序列是 [2,3,7,101]，因此长度为 4 。
  */
-public class 最长递增子序列 extends Base {
+public class 最长递增子序列 {
+
+    public int count;
 
     int[] memo;
 
@@ -36,9 +39,9 @@ public class 最长递增子序列 extends Base {
      * <p>
      * 正确的定义，以 i 下标的数字为结尾的子序列的最长递增数组长度
      * 那上述序列，即 i下标的数字能不能加到序列里，就看前面有没有比i下标小的数字，如果有，就+1，如果没有，就从i开始，为1.
-     *
+     * <p>
      * 选择：第i个数是否可以加入递增子序列。判断条件：0~i-1个数中有没有比i小的值，有就加+1，没有就从当前i为起点。
-     *
+     * <p>
      * 选择：正确的选择决定了程序的正确性。
      * <p>
      *

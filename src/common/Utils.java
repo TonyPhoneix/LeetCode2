@@ -3,11 +3,9 @@ package common;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-public class Base {
+public class Utils {
 
-    public int count;
-
-    public void print(int n, String s) {
+    public static void print(int n, String s) {
         for (int i = 0; i < n; i++) {
             System.out.print("    ");
         }
@@ -15,7 +13,7 @@ public class Base {
         System.out.println();
     }
 
-    public int[][] toMatrix(String template) {
+    public static int[][] toMatrix(String template) {
         //[1,2],[2,3],[3,4],[3,5],[4,5],[5,5],[5,6],[6,7],[7,8]
         var row = template.replace("[", "").split("]");
         var col = row[0].split(",");
@@ -23,7 +21,7 @@ public class Base {
         for (int i = 0; i < row.length; i++) {
             var colStr = row[i];
             var split = colStr.split(",");
-            var list = Arrays.stream(split).filter(this::isNotBlank).map(Integer::parseInt).collect(Collectors.toList());
+            var list = Arrays.stream(split).filter(Utils::isNotBlank).map(Integer::parseInt).collect(Collectors.toList());
             for (int j = 0; j < list.size(); j++) {
                 matrix[i][j] = list.get(j);
             }
@@ -31,7 +29,7 @@ public class Base {
         return matrix;
     }
 
-    public ListNode toList(String template) {
+    public static ListNode toList(String template) {
         ListNode head = new ListNode(0);
         ListNode pre = head;
         var split = template.split(",");
@@ -43,7 +41,7 @@ public class Base {
         return head.next;
     }
 
-    public void printListNode(ListNode node) {
+    public static void printListNode(ListNode node) {
         if (node == null) {
             System.out.println("null");
             return;
@@ -55,7 +53,7 @@ public class Base {
         System.out.print(node.val);
     }
 
-    private boolean isNotBlank(String s) {
+    private static boolean isNotBlank(String s) {
         return s != null && s.length() != 0;
     }
 }

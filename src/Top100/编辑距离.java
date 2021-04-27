@@ -1,7 +1,8 @@
 package Top100;
 
 import java.util.stream.IntStream;
-import common.*;
+
+import static common.Utils.print;
 
 /**
  * 给你两个单词word1 和word2，请你计算出将word1转换成word2 所使用的最少操作数。
@@ -13,7 +14,10 @@ import common.*;
  * 链接：https://leetcode-cn.com/problems/edit-distance
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
-public class 编辑距离 extends Base {
+public class 编辑距离 {
+
+    public int count;
+
 
     Integer[][] memo;
 
