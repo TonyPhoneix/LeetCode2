@@ -74,9 +74,7 @@ public class 基本计算器 {
         }
 
 
-        // 一个计算单元
-        // (b - c)
-        //left 是括号
+        // 计算一个正常的表达式，遇到括号就递归，用双端队列来计算
         public Res cal(char[] c, int left) {
             Deque<Integer> nums = new LinkedList<>();
             Deque<Character> ops = new LinkedList<>();
@@ -117,7 +115,7 @@ public class 基本计算器 {
                         res = p1 - p2;
                     }
                 } else {
-                    //多出来一个负数
+                    //多出来一个符号
                     if (op == '+') {
                         res = p1;
                     } else if (op == '-') {
