@@ -55,6 +55,15 @@ public class 前K个高频单词 {
 
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
+
+        /**
+         * 总结：
+         * 思路，前K大，用小顶堆，java中的小顶堆就是PriorityQueue，对头就是最小值。
+         * hashmap记录元素出现的次数，然后用小顶堆构造最小堆。然后注意要注意排序。最后输出时，由于堆顶是最小值，所以结果得倒叙。
+         * @param words
+         * @param k
+         * @return
+         */
         public List<String> topKFrequent(String[] words, int k) {
             //小顶堆求大k
             //hashmap key , count;
