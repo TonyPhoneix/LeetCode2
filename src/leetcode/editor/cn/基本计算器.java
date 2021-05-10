@@ -77,79 +77,71 @@ public class 基本计算器 {
         // 计算一个正常的表达式，遇到括号就递归，用双端队列来计算
         public Res cal(char[] c, int left) {
             Deque<Integer> nums = new LinkedList<>();
-            Deque<Character> ops = new LinkedList<>();
+            char preOp = '+';
             int right = -1;
             for (int i = left; i < c.length; i++) {
                 char n = c[i];
-                int last = isNumber(c, i);
-                if (i == left && n == '-') {
-                    //第一个值为负数 - ，加上一个0，方便计算
+                //对首字符是正负的进行特殊处理。
+                if (i == left && (n == '-' || n == '+')) {
+                    //如果第一个值为负数 - ，加上一个0，方便计算
                     nums.offer(0);
-                    ops.offer('-');
-                } else if (last != -1) {
+                    if (n == '-') {
+                        preOp = '-';
+                    } else {
+                        preOp = '+';
+                    }
+                    continue;
+                }
+                //算数字
+                boolean isDigit = false;
+                int res = 0;
+                while (i < c.length && Character.isDigit(c[i])) {
                     //如果是数字
-                    nums.offer(getNumber(c, i, last));
-                    i = last;
+                    res = c[i] - '0' + res * 10;
+                    i++;
+                    isDigit = true;
+                }
+                if (isDigit) {
+                    //如果是数字
+                    //当前i已经更新到非数字了。为了正确的for循环，需要-1
+                    i--;
+                    //如果上一个操作符是乘除，需要先计算
+                    if (preOp == '*' || preOp == '/') {
+                        Integer pop = nums.pollLast();
+                        nums.offer(preOp == '*' ? pop * res : pop / res);
+                        //preOp重置
+                    } else if (preOp == '+') {
+                        nums.offer(res);
+                    } else if (preOp == '-') {
+                        nums.offer(-res);
+                    }
                 } else if (n == ')') {
                     //遇到括号就停止
                     right = i;
                     break;
                 } else if (n == '(') {
+                    //进行递归子表达式
                     Res cal = cal(c, i + 1);
-                    nums.offer(cal.res);
+                    if (preOp == '*' || preOp == '/') {
+                        Integer pop = nums.pollLast();
+                        nums.offer(preOp == '*' ? pop * cal.res : pop / cal.res);
+                        //preOp重置
+                    } else if (preOp == '+') {
+                        nums.offer(cal.res);
+                    } else if (preOp == '-') {
+                        nums.offer(-cal.res);
+                    }
                     i = cal.right;
                 } else {
-                    ops.offer(n);
+                    preOp = n;
                 }
             }
-            //初始化完成，计算结果。
-            while (!ops.isEmpty()) {
-                Integer p1 = nums.poll();
-                Integer p2 = nums.poll();
-                Character op = ops.poll();
-                Integer res = null;
-                if (p1 != null && p2 != null) {
-                    if (op == '+') {
-                        res = p1 + p2;
-                    } else if (op == '-') {
-                        res = p1 - p2;
-                    }
-                } else {
-                    //多出来一个符号
-                    if (op == '+') {
-                        res = p1;
-                    } else if (op == '-') {
-                        res = -p1;
-                    }
-                }
-
-                //todo 乘法
-                nums.addFirst(res);
+            //累加计算结果
+            int res = 0;
+            while (!nums.isEmpty()) {
+                res += nums.pop();
             }
-            return new Res(nums.poll(), right);
-        }
-
-        private Integer getNumber(char[] c, int i, int last) {
-            StringBuilder sb = new StringBuilder();
-            for (int j = i; j <= last; j++) {
-                sb.append(c[j]);
-            }
-            return Integer.parseInt(sb.toString());
-        }
-
-
-        private int isNumber(char[] c, int index) {
-            //是不是数字，如果是数字就返回最后一个坐标的下标，不是就返回-1
-            int last = -1;
-            for (int i = index; i < c.length; i++) {
-                char n = c[i];
-                if (n >= '0' && n <= '9') {
-                    last = i;
-                } else {
-                    break;
-                }
-            }
-            return last;
+            return new Res(res, right);
         }
     }
 
@@ -161,7 +153,7 @@ public class 基本计算器 {
 
 //        int cal = solution.calculate("-2+ 1");
 //        int cal = solution.calculate("- (3 + (4 + 5))");
-        int cal = solution.calculate("1-(+1+1)");
+        int cal = solution.calculate("1 *(1 + 1 *(-10))");
 //        int cal = solution.calculate("1-11");
         System.out.println(cal);
     }
