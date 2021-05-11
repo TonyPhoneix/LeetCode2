@@ -58,6 +58,14 @@ public class 反转链表II {
      * }
      */
     class Solution {
+
+        /**
+         * 思路，left到right翻转，与未翻转的节点相连。
+         * @param head
+         * @param left
+         * @param right
+         * @return
+         */
         public ListNode reverseBetween(ListNode head, int left, int right) {
             //记录left-1的node 和right+1的node
             //翻转left 到 right的链表。第一个元素是翻转后的尾，最后一个元素是翻转后的头
