@@ -38,6 +38,7 @@ package leetcode.editor.cn;
 import common.TreeNode;
 import common.Utils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -66,22 +67,28 @@ public class 二叉树中的最大路径和 {
      */
     class Solution {
 
-        private List<List<String>> res;
+        private List<Integer> res;
 
         private Integer max = Integer.MIN_VALUE;
 
         public int maxPathSum(TreeNode root) {
-            dp(root);
+            dp2(root);
+            System.out.println(res);
             return max;
+        }
+
+        public List<Integer> maxPath(TreeNode root) {
+            dp2(root);
+            return res;
         }
 
         /**
          * 假设路径走过当前node的最大路径和
          * 状态：dp(node) 路径走过当前节点的最大路径
-         *
+         * <p>
          * 要么是左右子树都是最大路径，加上node成为最终的最大路径
          * 要么是一条左右子树中最大的一条加上当前node，成为最大路径，然后向上回溯。
-         *
+         * <p>
          * 当前节点作为最大路径和的节点返回的最大值。
          * <p>
          */
@@ -97,15 +104,60 @@ public class 二叉树中的最大路径和 {
             //返回左右子树中最大值 + 当前值。
             return Math.max(left, right) + node.val;
         }
+
+        public Node dp2(TreeNode node) {
+            if (node == null) {
+                return new Node(0, new ArrayList<>());
+            }
+            Node l = dp2(node.left);
+            int left = Math.max(l.res, 0);
+            Node r = dp2(node.right);
+            int right = Math.max(r.res, 0);
+            //这里我们假设当前节点是连接左右子树的根节点，然后计算一下最大值。
+            int max = left + right + node.val;
+            if (max > this.max) {
+                this.max = max;
+                List<Integer> list = new ArrayList<>();
+                if (l.res > 0) {
+                    list.addAll(l.path);
+                }
+                list.add(node.val);
+                if (r.res > 0) {
+                    list.addAll(r.path);
+                }
+                this.res = list;
+            }
+            //返回左右子树中最大值 + 当前值。
+            if (left > right) {
+                l.path.add(node.val);
+                return new Node(left + node.val, l.path);
+            } else {
+                r.path.add(node.val);
+                return new Node(right + node.val, r.path);
+            }
+        }
+
+        class Node {
+            int res;
+            List<Integer> path;
+
+            public Node(int res, List<Integer> path) {
+                this.res = res;
+                this.path = path;
+            }
+        }
     }
 //leetcode submit region end(Prohibit modification and deletion)
 
     public static void main(String[] args) {
         Solution solution = new 二叉树中的最大路径和().new Solution();
         TreeNode root = Utils.toTree("-10,9,20,null,null,15,7");
+//        TreeNode root = Utils.toTree("2,-1");
         Utils.show(root);
-        int dp = solution.maxPathSum(root);
-        System.out.println(dp);
+//        int dp = solution.maxPathSum(root);
+        List<Integer> path = solution.maxPath(root);
+//        System.out.println(dp);
+        System.out.println(path);
     }
 
 }
