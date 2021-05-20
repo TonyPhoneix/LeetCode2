@@ -61,6 +61,11 @@ public class 无重复字符的最长子串 {
     class Solution {
 
 
+        /**
+         * 思路，hash表存字符出现过的下表，双指针用来不断更新寻找子串。
+         * @param s
+         * @return
+         */
         public int lengthOfLongestSubstring(String s) {
             if (s.length() == 0) {
                 return 0;
@@ -81,6 +86,7 @@ public class 无重复字符的最长子串 {
                     len = Math.max(len, end - start + 1);
                     start = Math.max(index + 1, start);
                 }
+                //1、更新key的下标
                 map.put(key, i);
                 end += 1;
             }
