@@ -63,13 +63,15 @@ public class 无重复字符的最长子串 {
 
         /**
          * 思路，hash表存字符出现过的下表，双指针用来不断更新寻找子串。
+         *
          * @param s
          * @return
          */
-        public int lengthOfLongestSubstring(String s) {
+        public int lengthOfLongestSubstring2(String s) {
             if (s.length() == 0) {
                 return 0;
             }
+            //这个hashmap存的是下标
             Map<Character, Integer> map = new HashMap<>();
             int start = 0;
             int end = -1;
@@ -91,6 +93,31 @@ public class 无重复字符的最长子串 {
                 end += 1;
             }
             return Math.max(len, end - start + 1);
+        }
+
+        public int lengthOfLongestSubstring(String s) {
+            if (s.length() == 0) {
+                return 0;
+            }
+            //这个hashmap存的是元素的个数
+            Map<Character, Integer> map = new HashMap<>();
+            int left = 0;
+            int right = 0;
+            int len = 0;
+            while (right < s.length()) {
+                char c = s.charAt(right);
+                map.put(c, map.getOrDefault(c, 0) + 1);
+                //判断是否能缩小窗口
+                while (map.get(c) > 1) {
+                    //当前元素重复了
+                    char leftC = s.charAt(left);
+                    map.put(leftC, map.get(leftC) - 1);
+                    left++;
+                }
+                len = Math.max(len, right - left + 1);
+                right++;
+            }
+            return len;
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
